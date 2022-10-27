@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body,
+    html {
+      width: 100%;
+      height: 100%;
+    }
+    .edit {
+      width: 50%;
+      height: 50%;
+      position: relative;
+    }
+    .edit .content {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 16px;
+      padding: 0;
+      margin: 0;
+    }
+    .edit textarea {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      color: rgba(255, 255, 255, 0);
+      background-color: transparent;
+      caret-color: red;
+      font-size: 16px;
+      padding: 0;
+      margin: 0;
+    }
+    .myeditor {
+      width: 300px;
+      height: 300px;
+      border: 1px solid red;
+    }
+  </style>
+  <body>
+    <div id="myedit"></div>
+    <div class="myeditor" contenteditable="true"></div>
+    <div class="edit">
+      <div class="content"></div>
+      <textarea></textarea>
+    </div>
+
+    <script>
+      var iframe = document.createElement("iframe");
+      iframe.id = "te";
+      iframe.width = "98%";
+      iframe.height = "95%";
+      iframe.color = "red";
+      iframe.background = "black";
+      document.getElementById("myedit").appendChild(iframe);
+      iframe.contentWindow.document.body.contentEditable = "true";
+
+      let iframe2 = document.querySelector("iframe");
+      iframe2.addEventListener("input", (e) => {
+        console.log(e, "eeee");
+      });
+
+      let myeditor = document.querySelector(".myeditor");
+      myeditor.addEventListener("input", (e) => {
+        console.log(e.path[0].innerHTML, "div");
+        let index = e.path[0].innerHTML.indexOf("###");
+        if (index !== -1) {
+          myeditor.innerHTML = myeditor.innerHTML.slice(0, index);
+          myeditor.innerHTML =
+            myeditor.innerHTML + '<div style="color:red;">插</div>';
+          
+          myeditor.focus();
+          var range = document.createRange();
+          range.selectNodeContents(myeditor);
+          range.collapse(false);
+          var sel = window.getSelection();
+          //判断光标位置，如不需要可删除
+          if (sel.anchorOffset != 0) {
+            return;
+          }
+          sel.removeAllRanges();
+          sel.addRange(range);
+        }
+      });
+
+      let content = document.querySelector(".content");
+      let textarea = document.querySelector("textarea");
+      textarea.addEventListener("input", (e) => {
+        //   console.log(e.path[0].value, "eeeeee");
+        content.innerHTML = e.path[0].value;
+      });
+      textarea.addEventListener("keydown", (e) => {
+        if (e.keyCode == 13) {
+          content.innerHTML = content.innerHTML + "<br>";
+          console.log(content.innerText);
+        } else if (e.keyCode == 32) {
+          content.innerHTML = content.innerHTML + "&nbsp;";
+          console.log(content.innerHTML);
+        }
+      });
+    </script>
+  </body>
+</html>
