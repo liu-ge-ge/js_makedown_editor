@@ -6,13 +6,13 @@
     <div title="前进">
       <img src="../assets/qj.png" alt="" />
     </div>
-    <div>H1</div>
-    <div>H2</div>
-    <div>H3</div>
-    <div>H4</div>
-    <div>H5</div>
-    <div>H6</div>
-    <div>H7</div>
+    <div @click="emit('labelEle',1)">H1</div>
+    <div @click="emit('labelEle',2)">H2</div>
+    <div @click="emit('labelEle',3)">H3</div>
+    <div @click="emit('labelEle',4)">H4</div>
+    <div @click="emit('labelEle',5)">H5</div>
+    <div @click="emit('labelEle',6)">H6</div>
+    <div @click="emit('labelEle',7)">H7</div>
     <div title="有序列表">
       <img src="../assets/yx.png" alt="" />
     </div>
@@ -22,7 +22,7 @@
   </div>
 </template>
 <script setup>
-const emit = defineEmits(["change-sate"]);
+const emit = defineEmits(["change-sate","labelEle"]);
 </script>
 <style>
 @import "../assets/css/editor.css";
