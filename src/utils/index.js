@@ -35,8 +35,19 @@ function isNumber(val){
       return false;
   }
 }
+
+/**
+ * 插入Dom方法
+ * 待思考?
+ */
+
+function insertEditorDom(){
+
+}
+
 export {
     creHlabel,
     forcuDiv,
-    isNumber
+    isNumber,
+    insertEditorDom
 }

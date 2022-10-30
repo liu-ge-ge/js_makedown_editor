@@ -95,6 +95,16 @@
 .all .emoji_editor .bottom button:hover {
   background-color: #0b4c69;
 }
+.all .emoji_editor .prompt {
+  margin-top: 10px;
+  border-radius: 0 0 10px 10px;
+  width: 100%;
+  text-align: center;
+  height: 30px;
+  background-color: aquamarine;
+  line-height: 30px;
+  color: crimson;
+}
 ::-webkit-scrollbar {
   /* 滚动条宽 */
   width: 5px;
