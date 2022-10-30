@@ -20,7 +20,23 @@ const forcuDiv = (myeditor) => {
     sel.removeAllRanges();
     sel.addRange(range);
   };
+
+  /**
+* 校验只要是数字（包含正负整数，0以及正负浮点数）就返回true
+**/
+
+function isNumber(val){
+
+  var regPos = /^[0-9]+.?[0-9]*/; //判断是否是数字。
+
+  if(regPos.test(val) ){
+      return true;
+  }else{
+      return false;
+  }
+}
 export {
     creHlabel,
-    forcuDiv
+    forcuDiv,
+    isNumber
 }

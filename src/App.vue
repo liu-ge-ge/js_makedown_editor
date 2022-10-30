@@ -16,4 +16,5 @@ import editorLiu from './components/editor_liu.vue'
   /* text-align: center; */
   /* color: #2c3e50;/ */
 }
+@import "./assets/css/index.css";
 </style>

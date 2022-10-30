@@ -44,6 +44,7 @@ export function htmlRes(data) {
       let titleRes = retrunTitle(item);
       if (titleRes) {
         htmlData.push(titleRes);
+        return
       }
     }
     // //超链接 字符必须超过6个
@@ -111,7 +112,7 @@ export function htmlRes(data) {
       returnCodeBlock(item, index);
     }
     
-    // htmlData.push(`<p>${item}</p>`)
+    htmlData.push(`<p>${item}</p>`)
     // console.log(JSON.stringify(titleArr) ,'\n' ,'连续的空格数')
   });
 

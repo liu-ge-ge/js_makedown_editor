@@ -28,6 +28,11 @@ const lineRight = ref("lineRight");
 const editorRight = ref("editorRight");
 onMounted(() => {
   jsLine();
+//   document.onkeydown = function(event){
+//     if (event.ctrlKey && window.event.keyCode==86){	//禁用ctrl + v 功能
+//        return false;
+//     }
+// }
 });
 const jsLine = () => {
   let num = lineRight.value.innerHTML.split('id="line"').length - 1;
@@ -57,16 +62,18 @@ const divInput = (e) => {
 //回车
 const divKeyDown = (e) => {
   if (e.keyCode === 13) {
-    console.log('回车里')
-    console.log(lineRight.value.innerText,'innerText')
     let content = htmlRes(lineRight.value.innerText)
-    console.log(content.join(' '),'一个数组')
     editorRight.value.innerHTML = content.join(' ');
     if (lastDiv.value !== "") {
       lastDiv.value.style.backgroundColor = "rgb(56, 55, 55)";
       lastDiv.value = e.path[0];
     }
   }
+  let keyStr = e.key;
+ if((keyStr==='v'||keyStr==='V') && e.ctrlKey===true){
+	console.log('ctrl+v',lineRight.value.innerHTML,'lll')
+  // return false
+ }
 };
 //向可编辑div插入h标签
 const insertHLabel = (num) => {

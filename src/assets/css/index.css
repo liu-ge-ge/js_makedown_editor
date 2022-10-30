@@ -1,0 +1,42 @@
+.quote{
+    margin: 10px 0;
+    padding:5px 10px;
+    border-left: 4px solid rgb(155, 151, 151);
+    background-color: #eee;
+}
+.code{
+    position: relative;
+    padding: 30px;
+    width: 90%;
+    margin:10px 0 ;
+    font-size: 15px;
+    border-radius:10px ;
+    background-color: rgb(141, 139, 139); 
+}
+.code .codeChild{
+   width: 100%;
+   position: relative;
+   max-height: 400px;
+   overflow-y: auto;
+}
+
+.symbol{
+    color:#0086cd
+}
+.keywords{
+    color:#a71d5d
+}
+.fn{
+    color:#8d5db5
+}
+.notes{
+    color: #676e7e;
+}
+.code .language{
+    position: absolute;
+    right: 10px;
+    top:10px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #676e7e;
+}
